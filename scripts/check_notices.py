@@ -11,7 +11,23 @@ SOURCES = {
     "ssc.gov.in": "https://ssc.gov.in/",
     "psc.wb.gov.in": "https://psc.wb.gov.in/",
     "prb.wb.gov.in": "https://prb.wb.gov.in/",
+    "nrsc.gov.in": "https://www.nrsc.gov.in/",
+    "niti.gov.in": "https://niti.gov.in/",
+    "upsc.gov.in": "https://upsc.gov.in/",
+    "ugcnet.nta.ac.in": "https://ugcnet.nta.ac.in/",
+    "esri.in": "https://www.esri.in/",
+    "harsac.org": "https://www.harsac.org/",
+    "nabard.org": "https://www.nabard.org/",
+    "recruitment.nic.in": "https://recruitment.nic.in/",
+    "cdac.in": "https://www.cdac.in/",
+    "meity.gov.in": "https://www.meity.gov.in/",
+    "employmentnews.gov.in": "https://www.employmentnews.gov.in/",
+    "ncs.gov.in": "https://www.ncs.gov.in/",
 }
+# Links on any source that look like a recruitment notice but match no listed exam
+GENERIC = re.compile(r"recruit|vacanc|advertis|walk-in|young professional|\bjrf\b|career", re.I)
+def host(url):
+    return urllib.parse.urlparse(url).netloc.replace("www.", "")
 HEADERS = {"User-Agent": "Mozilla/5.0 (exam-notice-checker; personal use)"}
 
 
@@ -61,12 +77,20 @@ def main():
             if url in seen or url.startswith("javascript"):
                 continue
             low = text.lower()
+            matched = False
             for ex in exams:
+                if host(ex["site"]) != source:
+                    continue
                 if any(re.search(r"\b" + re.escape(k) + r"\b", low) for k in ex["keywords"]):
                     new.append({"title": text[:200], "url": url, "source": source,
                                 "exam": ex["n"], "found": today})
                     seen.add(url)
+                    matched = True
                     break
+            if not matched and GENERIC.search(text) and url not in seen:
+                new.append({"title": text[:200], "url": url, "source": source,
+                            "exam": "Other (" + source + ")", "found": today})
+                seen.add(url)
 
     state["notices"].extend(new)
     state["last_checked"] = today
@@ -82,7 +106,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-{
- "last_checked": null,
- "notices": []
-}
