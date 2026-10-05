@@ -30,52 +30,66 @@ a{color:var(--acc)}
 .sec{display:none}.sec.on{display:block}
 .src{font-size:13px;color:var(--mut)}
 @media(max-width:520px){dl{grid-template-columns:1fr}dt{margin-top:6px}}
-</style>
+form{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;background:var(--card);border:1px solid var(--line);border-radius:6px;padding:12px;font:14px system-ui,sans-serif}label{display:flex;flex-direction:column;gap:3px;color:var(--mut)}select,input[type=number]{padding:7px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--ink);font:inherit}.ck{flex-direction:row;align-items:center;gap:6px}.age{color:var(--warn);font-size:13px}#cnt{font:14px system-ui,sans-serif;color:var(--mut);margin:8px 0}</style>
 </head>
 <body>
 <main>
 <h1>Government exams 2026-27: Geography and RS &amp; GIS postgraduate</h1>
 <p class="sub">Profile: B.A./B.Sc. Geography (75%), M.Sc. RS &amp; GIS (85%), no experience, West Bengal. Last checked: 5 October 2026.</p>
-<div class="note"><strong>How this stays current.</strong> A GitHub Action checks the official sites daily and lists any new matching notices under "Newly detected notices". The dates, fees and syllabus on each card are reviewed by hand in data.json, so confirm everything on the official notification before paying.</div>
+<div class="note"><strong>Coverage.</strong> This lists the exams I could verify plus a few watch-list entries, not every government vacancy in India. A GitHub Action checks 15 official and portal sites daily and shows new notices under "Newly detected notices". Add more exams by editing data.json. Dates and fees are from news reports of official notices, so confirm on the official site before paying.</div>
+<form id="f" aria-label="Filter by your profile">
+<label>Highest qualification<select id="q"><option value="3">Graduate (Bachelor's)</option><option value="4" selected>Postgraduate (Master's)</option><option value="5">PhD</option><option value="2">Class 12</option><option value="1">Class 10</option></select></label>
+<label>Your subject area<select id="s"><option value="geo" selected>Geography / RS-GIS / Geoinformatics</option><option value="sci">Other science</option><option value="eng">Engineering / Technology</option><option value="other">Arts / Commerce / Other</option></select></label>
+<label>State<select id="st"><option value="wb" selected>West Bengal</option><option value="other">Other state</option></select></label>
+<label>Age (optional)<input type="number" id="a" min="16" max="70" placeholder="e.g. 24"></label>
+<label>Show<select id="v"><option value="all">All exams</option><option value="live">Open or not yet announced</option></select></label>
+<label class="ck"><input type="checkbox" id="lo" checked> Include lower-level posts (below my qualification)</label>
+</form>
 <nav role="tablist" id="tabs"></nav>
 <div id="out"></div>
 <p class="src" id="rev"></p>
-<p class="src">Eligibility, age and syllabus details marked "usual" come from earlier notifications and may change. Most posts treat the listed qualification as a minimum, so your PG degree qualifies you, but check each notification.</p>
+<p class="src">Age filter uses the General category limit and only adds a warning, because relaxations vary by category. Lower-level posts such as Class 10 or 12 level generally accept higher qualifications, but check each notification.</p>
 </main>
 <script>
-var E=[],SIM=[];
-var G=[["grad","Graduate level"],["hs","Higher secondary"],["sec","Secondary"],["new","Newly detected notices"],["sim","Similar exams"]],N=[],META={};
-function esc(s){return s}
-function days(c){var d=new Date(c+"T23:59:59+05:30");return Math.ceil((d-new Date())/864e5)}
+var E=[],SIM=[],N=[],META={},TAB="m",LV={"10":1,"12":2,"grad":3,"pg":4,"phd":5};
+function days(c){return Math.ceil((new Date(c+"T23:59:59+05:30")-new Date())/864e5)}
 function badge(e){
  if(!e.close)return '<span class="st soon">'+e.status+'</span>';
  var n=days(e.close);
  if(n<0)return '<span class="st closed">Closed on '+e.close+'</span>';
  return '<span class="st '+(n<=7?'soon':'open')+'">Open: '+(n===0?'closes today':n+' day'+(n>1?'s':'')+' left')+'</span>';
 }
-function card(e){
- return '<article><h2>'+e.n+'</h2>'+badge(e)+'<dl><dt>Dates</dt><dd>'+e.dates+'</dd><dt>Fee</dt><dd>'+e.fee+'</dd><dt>Age and eligibility</dt><dd>'+e.age+'</dd><dt>Syllabus</dt><dd>'+e.syl+'</dd><dt>Physical standards</dt><dd>'+e.phys+'</dd><dt>Note</dt><dd>'+e.next+'</dd></dl><a href="'+e.site+'" target="_blank" rel="noopener">Open official site: '+e.site.replace("https://","")+'</a></article>';
+function rank(e){return !e.close?1:(days(e.close)>=0?0:2)}
+function card(e,age){
+ var w=(age&&e.maxAge&&age>e.maxAge)?'<p class="age">You may be over the General age limit ('+e.maxAge+'). Check category relaxation.</p>':'';
+ var tag=e.scope==="private"?" (private)":e.scope==="wb"?" (West Bengal)":"";
+ return '<article><h2>'+e.n+'</h2>'+badge(e)+w+'<dl><dt>Level</dt><dd>Minimum: '+({"10":"Class 10","12":"Class 12","grad":"Graduate","pg":"Postgraduate"}[e.level])+tag+'</dd><dt>Dates</dt><dd>'+e.dates+'</dd><dt>Fee</dt><dd>'+e.fee+'</dd><dt>Age and eligibility</dt><dd>'+e.age+'</dd><dt>Syllabus / selection</dt><dd>'+e.syl+'</dd><dt>Physical standards</dt><dd>'+e.phys+'</dd><dt>Note</dt><dd>'+e.next+'</dd></dl><a href="'+e.site+'" target="_blank" rel="noopener">Official site: '+e.site.replace(/https?:\/\/(www\.)?/,"")+'</a></article>';
 }
-function init(){
-var tabs=document.getElementById("tabs"),out=document.getElementById("out");
-G.forEach(function(g,i){
- var b=document.createElement("button");b.textContent=g[1];b.setAttribute("role","tab");b.dataset.k=g[0];
- tabs.appendChild(b);
- var s=document.createElement("section");s.className="sec";s.id="s-"+g[0];
- if(g[0]==="new"){s.innerHTML=N.length?N.slice().reverse().map(function(n){return '<article><h2>'+n.title+'</h2><p>Detected '+n.found+' on '+n.source+'. Possibly related to: '+n.exam+'. Auto-detected, so open it and verify.</p><a href="'+n.url+'" target="_blank" rel="noopener">Open notice</a></article>'}).join(""):"<article><p>No new notices detected yet.</p></article>"}else if(g[0]==="sim"){s.innerHTML=SIM.map(function(x){return '<article><h2>'+x[0]+'</h2><p>'+x[1]+'</p></article>'}).join("")}
- else{s.innerHTML=E.filter(function(e){return e.g===g[0]}).map(card).join("")}
- out.appendChild(s);
-});
-function show(k){
- [].forEach.call(tabs.children,function(b){b.setAttribute("aria-selected",b.dataset.k===k)});
- [].forEach.call(out.children,function(s){s.classList.toggle("on",s.id==="s-"+k)});
+function v(id){return document.getElementById(id)}
+function render(){
+ var q=+v("q").value,s=v("s").value,st=v("st").value,age=+v("a").value,live=v("v").value==="live",low=v("lo").checked,h="";
+ if(TAB==="m"){
+  var L=E.filter(function(e){
+   if(LV[e.level]>q)return false;
+   if(!low&&LV[e.level]<q-1&&e.level!=="grad")return false;
+   if(e.streams.indexOf("any")<0&&e.streams.indexOf(s)<0)return false;
+   if(e.scope==="wb"&&st!=="wb")return false;
+   if(live&&rank(e)===2)return false;return true;
+  }).sort(function(a,b){return rank(a)-rank(b)});
+  h='<p id="cnt">'+L.length+' of '+E.length+' exams match.</p>'+L.map(function(e){return card(e,age)}).join("");
+ }else if(TAB==="n"){
+  h=N.length?N.slice().reverse().map(function(n){return '<article><h2>'+n.title+'</h2><p>Detected '+n.found+' on '+n.source+'. Possibly related to: '+n.exam+'. Auto-detected, so open it and verify.</p><a href="'+n.url+'" target="_blank" rel="noopener">Open notice</a></article>'}).join(""):"<article><p>No new notices detected yet.</p></article>";
+ }else{h=SIM.map(function(x){return '<article><h2>'+x[0]+'</h2><p>'+x[1]+'</p></article>'}).join("")}
+ v("out").innerHTML=h;
+ [].forEach.call(v("tabs").children,function(b){b.setAttribute("aria-selected",b.dataset.k===TAB)});
 }
-tabs.addEventListener("click",function(ev){if(ev.target.dataset.k)show(ev.target.dataset.k)});
-show("grad");
-document.getElementById("rev").textContent="Data last reviewed: "+META.rev+". Notices last checked by the bot: "+(META.chk||"never")+".";
-
-}
-Promise.all([fetch("data.json").then(function(r){return r.json()}),fetch("notices.json").then(function(r){return r.json()})]).then(function(r){E=r[0].exams;SIM=r[0].similar;META={rev:r[0].last_reviewed,chk:r[1].last_checked};N=r[1].notices;init()}).catch(function(){document.getElementById("out").innerHTML="<article><p>Could not load data.json. Open this page through GitHub Pages or a local server, not as a file.</p></article>"});
+[["m","Matching exams"],["n","Newly detected notices"],["s","Similar exams"]].forEach(function(t){var b=document.createElement("button");b.textContent=t[1];b.dataset.k=t[0];b.setAttribute("role","tab");v("tabs").appendChild(b)});
+v("tabs").addEventListener("click",function(e){if(e.target.dataset.k){TAB=e.target.dataset.k;render()}});
+v("f").addEventListener("input",function(){TAB="m";render()});
+Promise.all([fetch("data.json").then(function(r){return r.json()}),fetch("notices.json").then(function(r){return r.json()})]).then(function(r){
+ E=r[0].exams;SIM=r[0].similar;N=r[1].notices;
+ v("rev").textContent="Data last reviewed: "+r[0].last_reviewed+". Notices last checked by the bot: "+(r[1].last_checked||"never")+".";render();
+}).catch(function(){v("out").innerHTML="<article><p>Could not load data.json. Open this page through GitHub Pages or a local server, not as a file.</p></article>"});
 </script>
 </body>
 </html>

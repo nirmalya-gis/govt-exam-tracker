@@ -2,12 +2,11 @@
  "last_reviewed": "2026-10-05",
  "exams": [
   {
-   "g": "grad",
    "n": "SSC CGL 2026 (Group B/C, central government)",
    "site": "https://ssc.gov.in",
    "close": "2026-06-25",
    "dates": "Notified 21 May 2026. Applications closed 25 June 2026 (sources differ between 22 and 25 June after a reopening). Tier I 30 Sep to 30 Oct 2026; Tier II expected December 2026.",
-   "fee": "₹100. No fee for women, SC, ST, PwBD, ESM.",
+   "fee": "\u20b9100. No fee for women, SC, ST, PwBD, ESM.",
    "age": "18-32 (varies by post, with category relaxation). Any bachelor's degree.",
    "syl": "Tier I (usual): Reasoning 25, General Awareness 25, Quantitative Aptitude 25, English 25. 100 questions, 200 marks, 60 minutes, negative marking. Tier II: modules as given in the notification.",
    "phys": "None for most posts. A few posts (for example Preventive Officer) carry height/chest standards in the notification.",
@@ -16,15 +15,20 @@
     "combined graduate level",
     "cgl"
    ],
-   "id": "ssc-0"
+   "id": "ssc-0",
+   "level": "grad",
+   "streams": [
+    "any"
+   ],
+   "scope": "central",
+   "maxAge": 32
   },
   {
-   "g": "grad",
    "n": "WBCS (Executive etc.), West Bengal PSC",
    "site": "https://psc.wb.gov.in",
    "close": "2026-09-30",
    "dates": "Notification 10 Sep 2026. Applications ran 10 to 30 Sep 2026. Prelims expected November 2026 (reported, confirm on the site).",
-   "fee": "₹210 for General (reported, plus service charge). No fee for SC/ST of West Bengal and PwBD with 40% or more disability.",
+   "fee": "\u20b9210 for General (reported, plus service charge). No fee for SC/ST of West Bengal and PwBD with 40% or more disability.",
    "age": "Usual: about 21-36 as on 1 January, with relaxations. Graduation required.",
    "syl": "Prelims (usual): one objective paper on general studies, 200 marks. Mains: compulsory language and general studies papers plus optional subjects; Geography has been on the optional list, which suits your background.",
    "phys": "None for Executive, Group A/B. Some services (for example Police Service) have physical tests.",
@@ -34,10 +38,15 @@
     "wbcs",
     "civil service"
    ],
-   "id": "wbcs-1"
+   "id": "wbcs-1",
+   "level": "grad",
+   "streams": [
+    "any"
+   ],
+   "scope": "wb",
+   "maxAge": 36
   },
   {
-   "g": "grad",
    "n": "WBPSC Miscellaneous Services Examination",
    "site": "https://psc.wb.gov.in",
    "close": "2026-06-09",
@@ -50,15 +59,20 @@
    "keywords": [
     "miscellaneous"
    ],
-   "id": "wbpsc-2"
+   "id": "wbpsc-2",
+   "level": "grad",
+   "streams": [
+    "any"
+   ],
+   "scope": "wb",
+   "maxAge": null
   },
   {
-   "g": "hs",
    "n": "SSC CHSL 2026 (LDC/JSA, DEO)",
    "site": "https://ssc.gov.in",
    "close": "2026-10-07",
    "dates": "Notified 7 Sep 2026. Apply by 7 Oct 2026, 11 PM. Fee payment till 8 Oct 11 PM. Correction window 14 to 16 Oct. Tier I 30 Nov to 31 Dec 2026.",
-   "fee": "₹100. Women, SC, ST, PwBD and ESM exempt.",
+   "fee": "\u20b9100. Women, SC, ST, PwBD and ESM exempt.",
    "age": "Usual: 18-27. Minimum qualification is Class 12 pass.",
    "syl": "Tier I (usual): Reasoning, General Awareness, Quantitative Aptitude, English, 25 questions each, 60 minutes. Tier II and a typing/skill test follow as per notification.",
    "phys": "None. DEO and LDC posts have typing or skill tests, not physical tests.",
@@ -67,10 +81,15 @@
     "higher secondary",
     "chsl"
    ],
-   "id": "ssc-3"
+   "id": "ssc-3",
+   "level": "12",
+   "streams": [
+    "any"
+   ],
+   "scope": "central",
+   "maxAge": 27
   },
   {
-   "g": "hs",
    "n": "WBSSC / WBPSC clerkship and Group C",
    "site": "https://psc.wb.gov.in",
    "close": null,
@@ -85,16 +104,21 @@
     "clerkship",
     "group c"
    ],
-   "id": "wbssc-4"
+   "id": "wbssc-4",
+   "level": "12",
+   "streams": [
+    "any"
+   ],
+   "scope": "wb",
+   "maxAge": null
   },
   {
-   "g": "sec",
    "n": "SSC MTS and Havaldar 2026",
    "site": "https://ssc.gov.in",
    "close": null,
    "status": "Notification not confirmed",
    "dates": "The calendar first showed 30 Jun 2026. Later reports say it slipped to about September 2026 or TBA. I could not confirm a published notification, so check ssc.gov.in directly.",
-   "fee": "₹100 in past cycles. Women, SC, ST, PwBD, ESM exempt.",
+   "fee": "\u20b9100 in past cycles. Women, SC, ST, PwBD, ESM exempt.",
    "age": "Usual: 18-25 (Havaldar up to 27). Class 10 pass minimum.",
    "syl": "Computer-based test, usual 90 questions: Session 1 numerical aptitude and reasoning; Session 2 general awareness and English.",
    "phys": "MTS: none. Havaldar (usual): male height about 157.5 cm, chest 81 cm unexpanded (+5 cm expanded), 1600 m in 15 min; female height 152 cm, weight 48 kg, 1 km walk in 20 min. Confirm in the notification.",
@@ -105,10 +129,15 @@
     "mts",
     "havaldar"
    ],
-   "id": "ssc-5"
+   "id": "ssc-5",
+   "level": "10",
+   "streams": [
+    "any"
+   ],
+   "scope": "central",
+   "maxAge": 25
   },
   {
-   "g": "sec",
    "n": "WB Police Constable (WBPRB)",
    "site": "https://prb.wb.gov.in",
    "close": null,
@@ -122,7 +151,284 @@
    "keywords": [
     "constable"
    ],
-   "id": "wb-6"
+   "id": "wb-6",
+   "level": "10",
+   "streams": [
+    "any"
+   ],
+   "scope": "wb",
+   "maxAge": 30
+  },
+  {
+   "id": "nrsc-7",
+   "n": "ISRO NRSC temporary research posts (Advt. NRSC/RMT/1/2026)",
+   "site": "https://www.nrsc.gov.in",
+   "close": "2026-08-21",
+   "level": "pg",
+   "streams": [
+    "geo",
+    "sci",
+    "eng"
+   ],
+   "scope": "central",
+   "maxAge": 28,
+   "dates": "Notified 1 Aug 2026. Applications 1 to 21 Aug 2026 (closed). Hyderabad. Temporary contract posts.",
+   "fee": "Not found. Check the notification.",
+   "age": "Research Scientist (M.Sc. based): 28 years UR/EWS, 31 OBC, 33 SC/ST, as on 21 Aug 2026.",
+   "syl": "No standard syllabus found. Selection is by screening and interview as per the notification. Relevant fields: Remote Sensing and GIS, Geoinformatics, Geology, Computer Science, Environment, Agriculture.",
+   "phys": "None.",
+   "next": "48 posts reported (Research Scientist, Project Scientist, Project Associate, JRF), roughly \u20b931,000 to \u20b956,100 plus allowances. Closest match to your M.Sc. RS &amp; GIS. NRSC advertises again from time to time.",
+   "keywords": [
+    "recruitment",
+    "advertisement",
+    "vacancy",
+    "research scientist",
+    "project associate",
+    "jrf"
+   ]
+  },
+  {
+   "id": "niti-8",
+   "n": "NITI Aayog Consultant / Young Professional (Work for Viksit Bharat)",
+   "site": "https://niti.gov.in",
+   "close": "2026-09-28",
+   "level": "pg",
+   "streams": [
+    "any"
+   ],
+   "scope": "central",
+   "maxAge": null,
+   "dates": "Published 30 Jun 2026. Last date 28 Sep 2026 (closed). 23 posts reported. Profiles are also reported to be accepted on a rolling basis.",
+   "fee": "Not found.",
+   "age": "PG or professional degree. Earlier Young Professional calls asked for about 1 year of experience and age under 32, so check whether freshers qualify.",
+   "syl": "No written exam. Screening and interview.",
+   "phys": "None.",
+   "next": "Contract roles in New Delhi on policy research and data analysis.",
+   "keywords": [
+    "recruitment",
+    "young professional",
+    "consultant",
+    "vacancy",
+    "advertisement"
+   ]
+  },
+  {
+   "id": "esri-9",
+   "n": "Esri India (private company, not government)",
+   "site": "https://www.esri.in",
+   "close": null,
+   "status": "Rolling, check careers page",
+   "level": "grad",
+   "streams": [
+    "geo",
+    "sci",
+    "eng"
+   ],
+   "scope": "private",
+   "maxAge": null,
+   "dates": "Not verified. Check the careers page.",
+   "fee": "None for private hiring.",
+   "age": "Per job post.",
+   "syl": "Interviews and technical tests (GIS, spatial analysis).",
+   "phys": "None.",
+   "next": "Included because you asked. Esri is not a government body.",
+   "keywords": [
+    "careers",
+    "career",
+    "job",
+    "vacancy",
+    "opening"
+   ]
+  },
+  {
+   "id": "net-10",
+   "n": "UGC NET / JRF, Geography (NTA)",
+   "site": "https://ugcnet.nta.ac.in",
+   "close": null,
+   "status": "Not verified, usually twice a year",
+   "level": "pg",
+   "streams": [
+    "geo"
+   ],
+   "scope": "central",
+   "maxAge": 30,
+   "dates": "Not verified for 2026-27. Check the NTA site.",
+   "fee": "Check the NTA notice.",
+   "age": "JRF upper age usually 30 (relaxation applies). Master's degree with minimum marks; check subject eligibility for RS &amp; GIS.",
+   "syl": "Usual: Paper 1 teaching and research aptitude, Paper 2 Geography. Computer-based, objective.",
+   "phys": "None.",
+   "next": "Leads to Assistant Professor eligibility or JRF.",
+   "keywords": [
+    "ugc net",
+    "net june",
+    "net december",
+    "jrf"
+   ]
+  },
+  {
+   "id": "upsc-11",
+   "n": "UPSC Civil Services Examination",
+   "site": "https://upsc.gov.in",
+   "close": null,
+   "status": "Not verified, notified yearly",
+   "level": "grad",
+   "streams": [
+    "any"
+   ],
+   "scope": "central",
+   "maxAge": 32,
+   "dates": "Not verified for 2027. Notification is usually early in the year, Prelims mid-year.",
+   "fee": "Usual \u20b9100. Women, SC, ST, PwBD exempt.",
+   "age": "Usual 21-32 General, with relaxation and an attempt limit.",
+   "syl": "Prelims: General Studies and CSAT. Mains: nine papers including two optional papers (Geography is available). Then interview.",
+   "phys": "Medical standards apply; some services (IPS, IFoS) have physical tests.",
+   "next": "Your Geography background suits the optional.",
+   "keywords": [
+    "civil services",
+    "cse",
+    "examination notice"
+   ]
+  },
+  {
+   "id": "harsac-12",
+   "n": "HARSAC (Haryana Space Applications Centre) project posts, Advt. HARSAC/HSR/Recruitment/PP/2026/01",
+   "site": "https://www.harsac.org",
+   "close": "2026-03-20",
+   "level": "pg",
+   "streams": [
+    "geo",
+    "sci",
+    "eng"
+   ],
+   "scope": "central",
+   "maxAge": null,
+   "dates": "Applications by email, last date 20 Mar 2026 (closed). 12 contract posts reported. A larger HARSAC call for about 71 posts was also reported earlier in 2026.",
+   "fee": "Not found.",
+   "age": "Per post. GIS &amp; AutoCAD Operator: first-class Master's in RS/GIS/Geoinformatics, or first-class Master's in a related field (Geography, Geology, Environmental Science and others) with a PG Diploma in RS/GIS. Other posts need experience.",
+   "syl": "No written exam found. Shortlisting and interview.",
+   "phys": "None.",
+   "next": "HARSAC is a Haryana government body working with ISRO. Posts are contractual (about \u20b936,000 plus HRA for the Operator post, higher for others). It recruits repeatedly, so watch harsac.org.",
+   "keywords": [
+    "recruitment",
+    "advertisement",
+    "vacancy",
+    "vacancies",
+    "notification",
+    "project",
+    "gis"
+   ]
+  },
+  {
+   "id": "nabard-13",
+   "n": "NABARD Development Assistant (Advt. 08/DA/2025-26)",
+   "site": "https://www.nabard.org",
+   "close": "2026-02-03",
+   "level": "grad",
+   "streams": [
+    "any"
+   ],
+   "scope": "central",
+   "maxAge": 35,
+   "dates": "Applications 17 Jan to 3 Feb 2026 (closed). Prelims 21 Feb 2026, Mains 12 Apr 2026. 162 posts reported.",
+   "fee": "\u20b9550 total (\u20b9450 fee plus \u20b9100 charges); SC/ST/PwBD \u20b9100 total (per the notification).",
+   "age": "Reported 21-35 years as on 17 Jan 2026. Graduation required; check the minimum marks in the notification.",
+   "syl": "Online Prelims then Mains, then a language proficiency test as per the notice. Usual topics: reasoning, English, quantitative aptitude, computer knowledge, general awareness, and agriculture and rural development.",
+   "phys": "None.",
+   "next": "NABARD also recruits Grade A/B officers through a separate yearly notice (not found for 2026-27).",
+   "keywords": [
+    "recruitment",
+    "advertisement",
+    "vacancy",
+    "vacancies",
+    "notification",
+    "grade a",
+    "grade b",
+    "development assistant"
+   ]
+  },
+  {
+   "id": "nic-14",
+   "n": "NIC Scientific / Technical Assistant-A (MeitY), Advt. NIC/STA/2026/2",
+   "site": "https://recruitment.nic.in",
+   "close": "2026-09-30",
+   "level": "grad",
+   "streams": [
+    "eng"
+   ],
+   "scope": "central",
+   "maxAge": null,
+   "dates": "Notified 26 Aug 2026. Applications 1 to 30 Sep 2026 (closed). 376 posts reported.",
+   "fee": "Not found.",
+   "age": "Posts are in Computer Science/IT, Electronics &amp; Communication and Data Science/AI, based on GATE scores, so not open to a Geography background.",
+   "syl": "Selection based on GATE score as per the notice.",
+   "phys": "None.",
+   "next": "NIC (under MeitY) also advertised 153 Scientist-C/D posts (8 to 30 Apr 2026, closed), also for CS/IT/Electronics streams.",
+   "keywords": [
+    "recruitment",
+    "advertisement",
+    "vacancy",
+    "vacancies",
+    "notification",
+    "scientist",
+    "scientific"
+   ]
+  },
+  {
+   "id": "cdac-15",
+   "n": "C-DAC (MeitY) contractual posts, Advt. CORP/JIT/02/2026",
+   "site": "https://www.cdac.in",
+   "close": "2026-06-20",
+   "level": "grad",
+   "streams": [
+    "eng",
+    "sci"
+   ],
+   "scope": "central",
+   "maxAge": null,
+   "dates": "Applications 1 to 20 Jun 2026 (closed). 900+ posts across 11 centres including Kolkata. Smaller project calls appeared in September 2026.",
+   "fee": "Not found.",
+   "age": "Mostly engineering and IT posts. Check each post for science degrees.",
+   "syl": "Written test or interview, communicated to shortlisted candidates.",
+   "phys": "None.",
+   "next": "C-DAC runs frequent hiring cycles.",
+   "keywords": [
+    "recruitment",
+    "advertisement",
+    "vacancy",
+    "vacancies",
+    "notification",
+    "project",
+    "cdac",
+    "c-dac"
+   ]
+  },
+  {
+   "id": "meity-16",
+   "n": "Ministry of Electronics and IT (MeitY) direct hiring",
+   "site": "https://www.meity.gov.in",
+   "close": null,
+   "status": "Not verified, check Careers page",
+   "level": "pg",
+   "streams": [
+    "any"
+   ],
+   "scope": "central",
+   "maxAge": null,
+   "dates": "I did not find a current MeitY-level notice. MeitY and its bodies (NIC, C-DAC, Bhashini) post Young Professional, Consultant and deputation posts from time to time.",
+   "fee": "Per notice.",
+   "age": "Per notice.",
+   "syl": "Usually screening and interview.",
+   "phys": "None.",
+   "next": "A Bhashini Young Professional call (8 posts) closed on 17 May 2026.",
+   "keywords": [
+    "recruitment",
+    "advertisement",
+    "vacancy",
+    "vacancies",
+    "notification",
+    "young professional",
+    "consultant"
+   ]
   }
  ],
  "similar": [
@@ -141,6 +447,10 @@
   [
    "Physical tests like Havaldar and WB Police",
    "SSC GD Constable, CRPF/CISF/BSF recruitment, Railway Protection Force."
+  ],
+  [
+   "Other central and state bodies worth watching",
+   "Employment News (weekly central job listings), National Career Service portal, Survey of India, IMD, GSI, Forest Survey of India, other states' space applications centres and public service commissions. They are added as watch sources in the checker. Eligibility must be read from each notice."
   ]
  ]
 }
