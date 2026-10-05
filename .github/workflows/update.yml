@@ -1,0 +1,30 @@
+name: Check exam notices
+on:
+  schedule:
+    - cron: "30 2 * * *"   # daily, 08:00 IST
+  workflow_dispatch: {}
+permissions:
+  contents: write
+  issues: write
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: python scripts/check_notices.py
+      - name: Commit changes
+        run: |
+          git config user.name "notice-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add notices.json
+          git diff --cached --quiet || git commit -m "Update detected notices" && git push
+      - name: Open issue for new notices
+        if: hashFiles('new_notices.md') != '' 
+        env: { GH_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+        run: |
+          if [ -s new_notices.md ]; then
+            gh issue create --title "New exam notice(s) detected $(date +%F)" \
+              --body-file new_notices.md
+          fi
